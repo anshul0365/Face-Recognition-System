@@ -83,6 +83,23 @@
             // });
         }
 
+        function getName(){
+            var Name = "ABC";
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:5000/getName",
+                headers: {
+                    // 'Access-Control-Allow-Origin': '*'
+                },
+                data: {
+                    name: Name,
+                    // count: timeCount
+                }
+            }).done(function (data) {
+                console.log(data);
+            });
+        }
+
         // function getBase64Image(src, outputFormat) {
         //         const img = new Image();
         //         img.crossOrigin = 'Anonymous';
@@ -104,23 +121,24 @@
         //         }
         //     }
 
-        $(document).ready(function () {
-            startVideoStream();
-            // captureImage();
-            var timer = setInterval(function() {
-                captureImage();
+        // $(document).ready(function () {
+        //     startVideoStream();
+        //     // captureImage();
+        //     var timer = setInterval(function() {
+        //         captureImage();
                 
-                if(timeCount>10){
-                    clearInterval(timer);
-                    // return
-                }
-                console.log(timeCount);
-                timeCount++;
-            }, 1000); //time in millisecond
-        });
+        //         if(timeCount>10){
+        //             clearInterval(timer);
+        //             // return
+        //         }
+        //         console.log(timeCount);
+        //         timeCount++;
+        //     }, 1000); //time in millisecond
+        // });
 
         $('#capture').click(function(){
-            captureImage();
+            // captureImage();
+            getName();
         });
         
     </script>

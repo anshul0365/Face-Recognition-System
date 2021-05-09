@@ -21,6 +21,11 @@ app.config['UPLOAD_FOLDER'] = './dataset'
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/getName', methods=['POST'])
+@cross_origin()
+def getName():
+    name = request.values['name']
+    return name
 
 @app.route('/saveImage', methods=['POST'])
 @cross_origin()
