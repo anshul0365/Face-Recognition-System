@@ -21,7 +21,6 @@
         video {
             transform: scaleX(-1);
             width: 840px;
-            /* height: 100%; */
         }
     </style>
 </head>
@@ -29,22 +28,23 @@
     <div class="div-video">
         <video autoplay="true" id="liveStream"></video>
         <button id="capture" type="button">Capture</button>
+        <button id="startStream" type="button">Start Stream</button>
     </div>
     <div>
         <canvas id="liveStreamCanvas" class="liveStreamCanvas"></canvas>
-        <!-- <img id="liveStreamImg"> -->
     </div>
 
     <script type="text/javascript">
         var video = document.querySelector("#liveStream");
         var canvas  = document.querySelector('#liveStreamCanvas');
-        // var img = document.getElementById('liveStreamImg');
         var timeCount = 1;
+
         function startVideoStream(){
             if (navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true })
                     .then(function (stream) {
                         video.srcObject = stream;
+                        startCapturing()
                     })
                     .catch(function (error) {
                         console.log("Something went wrong!");
@@ -62,85 +62,42 @@
                 type: "POST",
                 url: "http://127.0.0.1:5000/saveImage",
                 headers: {
-                    'Access-Control-Allow-Origin': '*'
-                },
-                data: {
-                    imageData: data,
-                    count: timeCount
-                }
-            }).done(function (data) {
-                console.log(data);
-                // console.log(typeof(data));
-                // getBase64Image(data, 'image/png');
-            });
-            // downloadLink.href = data;
-            // downloadLink.download = "mypainting.png";
-            // console.log(dwnldLink);
-
-            // canvas.toBlob()(blob => {
-            //     const img = new Image();
-            //     img.src = window.URL.createObjectUrl(blob);
-            // });
-        }
-
-        function getName(){
-            var Name = "ABC";
-            $.ajax({
-                type: "POST",
-                url: "http://127.0.0.1:5000/getName",
-                headers: {
                     // 'Access-Control-Allow-Origin': '*'
                 },
                 data: {
-                    name: Name,
-                    // count: timeCount
+                    imageData: data
+                },
+                success: function(data){
+                    console.log(data);
                 }
-            }).done(function (data) {
-                console.log(data);
             });
         }
 
-        // function getBase64Image(src, outputFormat) {
-        //         const img = new Image();
-        //         img.crossOrigin = 'Anonymous';
-        //         img.onload = () => {
-        //             const canvas = document.createElement('canvas');
-        //             const ctx = canvas.getContext('2d');
-        //             let dataURL;
-        //             canvas.height = img.naturalHeight;
-        //             canvas.width = img.naturalWidth;
-        //             ctx.drawImage(img, 0, 0);
-        //             dataURL = canvas.toDataURL(outputFormat);
-        //             // callback(dataURL);
-        //         };
+        $(document).ready(function () {
+            startVideoStream();
+        });
 
-        //         img.src = src;
-        //         if (img.complete || img.complete === undefined) {
-        //             img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-        //             img.src = src;
-        //         }
-        //     }
+        function startCapturing(){
+            var timer = setInterval(function () {
+                captureImage();
 
-        // $(document).ready(function () {
-        //     startVideoStream();
-        //     // captureImage();
-        //     var timer = setInterval(function() {
-        //         captureImage();
-                
-        //         if(timeCount>10){
-        //             clearInterval(timer);
-        //             // return
-        //         }
-        //         console.log(timeCount);
-        //         timeCount++;
-        //     }, 1000); //time in millisecond
-        // });
+                if (timeCount > 10) {
+                    clearInterval(timer);
+                    // return
+                }
+                console.log(timeCount);
+                timeCount++;
+            }, 1000); //time in millisecond
+        }
+
+        $('#startStream').click(function () {
+            startVideoStream();
+        });
 
         $('#capture').click(function(){
-            // captureImage();
-            getName();
+            captureImage();
         });
-        
+
     </script>
 </body>
 </html>

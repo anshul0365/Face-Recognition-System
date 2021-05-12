@@ -1,16 +1,12 @@
-from flask import Flask, request, redirect, url_for, flash, send_file
-from flask.helpers import send_from_directory
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
-from werkzeug.utils import secure_filename
 
 import os
 import base64
 from PIL import Image
-from io import BytesIO, StringIO
 import numpy as np
 import cv2
 import io
-import re
 
 app = Flask(__name__)
 CORS(app)
@@ -32,8 +28,6 @@ def getName():
 def save_image():
     print('inside save_image')
     if request.method == 'POST':
-        # print('inside if block')
-        # print(os.getcwd())
         if 'imageData' not in request.values:
             return 'No file selected'
 
@@ -54,20 +48,32 @@ def save_image():
         # Decoding base64 data to image file
         imageDecoded = Image.open(io.BytesIO(base64.decodebytes(arr)))
 
-        # Saving decoded image file locally
-        # print(imageDecoded)
-        # imageDecoded.save(os.path.join(
-        #     app.config['UPLOAD_FOLDER'], imageCount+'.png'), 'PNG') 
+        # Image Path
         path = './dataset/'+imageCount+'.png'
-        imageDecoded.save(path, 'png')
 
-        # imageDecoded.close()
+        # Saving decoded image file locally
 
+        # 1. PIL Method
+        try:
+            imageDecoded.save(path, 'PNG') 
+            # Close File Stream
+            imageDecoded.close()
+            return "File save successfully"
+        except OSError as error:
+            return "Unsuccessfull\nError: "+error
+
+        # 2. OpenCV Method
+        # result = cv2.imwrite(path, np.array(imageDecoded))
+        # if result:
+        #     return "File saved successfully"
+        # else:
+        #     return "Unsuccessfull"
+        
+        # 3. File Stream Method
         # with open("imageToSave.png", "wb") as fh:
         #     fh.write(base64.decodebytes(arr))
-        return imageBase64File
     else:
-        return 'File not Saved'
+        return 'Unauthorized Request'
         
 
 
