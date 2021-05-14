@@ -1,11 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_cors import CORS, cross_origin
 
 import os
 import base64
 from PIL import Image
-import numpy as np
-import cv2
 import io
 
 app = Flask(__name__)
@@ -17,27 +15,15 @@ app.config['UPLOAD_FOLDER'] = './dataset'
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/getName', methods=['POST'])
-@cross_origin()
-def getName():
-    name = request.values['name']
-    return name
-
 @app.route('/saveImage', methods=['POST'])
 @cross_origin()
 def save_image():
-    print('inside save_image')
     if request.method == 'POST':
         if 'imageData' not in request.values:
             return 'No file selected'
 
         # Collecting base64 data
         imageBase64File = request.values['imageData']
-
-        # count of number of files existing in the specified dir
-        imageCount = str(len(os.listdir('./dataset'))+1)
-        
-        # image_data = re.sub('^data:image/.+;base64,', '', imageBase64File)
         
         # Removing pre-attached un-useful data from base64 data
         image_data = imageBase64File.split('base64,')
@@ -48,34 +34,54 @@ def save_image():
         # Decoding base64 data to image file
         imageDecoded = Image.open(io.BytesIO(base64.decodebytes(arr)))
 
+        # Check if temp folder already exists or not; if not then create one
+        if not os.path.isdir('./dataset/temp'):
+            try:
+                os.mkdir('./dataset/temp')
+            except OSError as error:
+                return "Temporary Folder does not created \nError:- "+error
+            else:
+                print("Temporary Folder created successfully")
+        
+        # count of number of files existing in the specified dir
+        imageCount = str(len(os.listdir('./dataset/temp/'))+1)
+        
         # Image Path
-        path = './dataset/'+imageCount+'.png'
+        path = './dataset/temp/'+imageCount+'.png'
 
         # Saving decoded image file locally
-
         # 1. PIL Method
         try:
             imageDecoded.save(path, 'PNG') 
             # Close File Stream
             imageDecoded.close()
-            return "File save successfully"
         except OSError as error:
             return "Unsuccessfull\nError: "+error
-
-        # 2. OpenCV Method
-        # result = cv2.imwrite(path, np.array(imageDecoded))
-        # if result:
-        #     return "File saved successfully"
-        # else:
-        #     return "Unsuccessfull"
-        
-        # 3. File Stream Method
-        # with open("imageToSave.png", "wb") as fh:
-        #     fh.write(base64.decodebytes(arr))
+        else:
+            return "File save successfully"
     else:
-        return 'Unauthorized Request'
+        return 'Unrecognized HTTP Request'
         
 
+@app.route('/getName', methods=['POST'])
+@cross_origin()
+def getName():
+    name = request.values['name']
+    # Check if temp folder already exists or not; if not then return error and redirect to homepage
+    if os.path.isdir('./dataset/temp'):
+        dir_name = str.lower(name).replace(" ", "_")
+        count = 0
+        if any(x.startswith(dir_name) for x in os.listdir('./dataset')):
+            count+=1
+        try:
+            os.rename('./dataset/temp', './dataset/'+dir_name+str(count+1))
+        except OSError as error:
+            return "Error:- "+error
+        else:
+            return "Face Data Saved Successfully"
+    else:
+        return "Directory not present. Try again later" 
+        # return redirect('../index.htm')
 
 @app.errorhandler(404)
 def page_not_found(e):

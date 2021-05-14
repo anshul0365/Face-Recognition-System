@@ -29,6 +29,8 @@
         <video autoplay="true" id="liveStream"></video>
         <button id="capture" type="button">Capture</button>
         <button id="startStream" type="button">Start Stream</button>
+        <input type="text" name="getName" id="getName">
+        <button id="getNameBtn" type="button">Submit Name</button>
     </div>
     <div>
         <canvas id="liveStreamCanvas" class="liveStreamCanvas"></canvas>
@@ -96,6 +98,23 @@
 
         $('#capture').click(function(){
             captureImage();
+        });
+
+        $('#getNameBtn').click(function () {
+            var input_name = document.getElementById('getName').value
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:5000/getName",
+                headers: {
+                    // 'Access-Control-Allow-Origin': '*'
+                },
+                data: {
+                    name: input_name
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
         });
 
     </script>
