@@ -1,0 +1,64 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif !important;
+    background-color : #EAEAEA !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    overflow-y: hidden;
+}
+
+a{
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+a:hover{
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.7) !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.navbar-brand{
+    color: #d3d3d3 !important;
+}
+.cs-font-Raleway{
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.cs-font-Montserrat{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.cs-font-Montserrat-700{
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+}
+
+.cs-font-Montserrat-900{
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 900 !important;
+}
+
+.cs-text-color-black-60{
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.cs-fw-700{
+    font-weight: 500 !important;
+}
+
+video{
+    object-fit: cover;
+}
+
+.heading{
+    font-size: 3.3rem;
+    letter-spacing: 0.1rem;
+}
+
+.cs-text-justify{
+    text-align: justify !important;
+}
