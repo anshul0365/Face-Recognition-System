@@ -9,3 +9,4 @@ $(window).resize(function () {
     video.height = window.innerHeight
     console.log(video.height)
 });
+

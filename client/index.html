@@ -21,23 +21,24 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand cs-font-Montserrat-700" href="#">Face Recognition</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active fw-bolder cs-text-color-black-60 cs-font-Montserrat" href="#">Home</a>
+                    <li class="nav-item px-1">
+                        <a class="nav-link active cs-text-color-black-60 cs-font-Montserrat" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cs-font-Montserrat" href="#">Link</a>
+                    <li class="nav-item px-1">
+                        <a class="nav-link cs-font-Montserrat" href="#">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cs-font-Montserrat" href="#" >Contact Us</a>
+                    <li class="nav-item px-1">
+                        <a class="nav-link cs-font-Montserrat" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -46,30 +47,82 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-7 p-0">
+            <div class="col-lg-7 p-0 position-relative">
+                <button type="button" class="position-absolute start-50 cs-btn-start cs-fw-500" id="btn-start"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">START</button>
                 <video src="assets/biometric-face-recognition.mp4" defer autoplay="true" width="100%" loop></video>
             </div>
             <div class="col-lg-5 my-5 p-5">
                 <div>
-                    <span class="cs-font-Montserrat-900 heading">FACE</span>
+                    <span class="cs-font-Montserrat-900 heading" id="typeit-Face">FACE</span>
                 </div>
                 <div>
-                    <span class="cs-font-Montserrat-900 heading">RECOGNITION</span>
+                    <span class="cs-font-Montserrat-900 heading" id="typelt-Recognition">RECOGNITION</span>
                 </div>
                 <div class="mt-2">
-                    <p class="cs-text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                    <p class="cs-text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                         Reiciendis dolorum totam nam necessitatibus, recusandae pariatur,
                         id debitis, delectus ratione quam consequuntur doloribus provident
-                        omnis adipisci. Veniam beatae enim deserunt molestias? Veritatis, 
-                        mollitia laudantium quasi quidem expedita deleniti qui inventore 
-                        officiis quis ab aliquid molestias. Tempora doloribus odio quae 
+                        omnis adipisci. Veniam beatae enim deserunt molestias? Veritatis,
+                        mollitia laudantium quasi quidem expedita deleniti qui inventore
+                        officiis quis ab aliquid molestias. Tempora doloribus odio quae
                         excepturi architecto.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quam cumque ipsum non expedita commodi esse nulla quod quo, quidem neque quia culpa aspernatur, laudantium totam itaque illo, placeat molestiae.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laborum, excepturi dolorem obcaecati illum nesciunt dolore id veniam fuga, deleniti harum blanditiis optio neque? Repellendus fuga modi ex voluptas explicabo, voluptates possimus rerum sapiente culpa, labore optio, vel impedit dolorem ipsa a odio. Rerum sunt dignissimos, accusamus nam neque nemo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quam cumque ipsum non expedita
+                        commodi esse nulla quod quo, quidem neque quia culpa aspernatur, laudantium totam itaque illo,
+                        placeat molestiae.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laborum, excepturi dolorem
+                        obcaecati illum nesciunt dolore id veniam fuga, deleniti harum blanditiis optio neque?
+                        Repellendus fuga modi ex voluptas explicabo, voluptates possimus rerum sapiente culpa, labore
+                        optio, vel impedit dolorem ipsa a odio. Rerum sunt dignissimos, accusamus nam neque nemo.
                     </p>
                     <a href="" class=" d-flex align-items-center">
-                        <span class="cs-fw-700">Read More</span> <i class="bi bi-arrow-right-short fs-3"></i>
+                        <span class="cs-fw-500 cs-fs-14px">Read More</span> <i class="bi bi-arrow-right-short fs-4"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content py-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="assets/get-started-bg.png" alt="Get Started | Face Recognition"
+                                    class="img-fluid cs-img-get-started">
+                            </div>
+                            <div class="col-lg-8 pe-5">
+                                <h4>Get Started</h4>
+                                <p> 
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem iure aut nesciunt maxime maiores dignissimos ipsam esse perferendis dolore ratione?
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, inventore.
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, tempore.
+                                </p>
+
+                                <div>
+                                    <button type="button" class="cs-btn-get-started">
+                                        <a href="">Recognize Me</a>
+                                    </button>
+                                    <button type="button" class="cs-btn-get-started-outlined mx-2">
+                                        <a href="./new-face-data.html">New Data</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="modal-header py-2 px-2">
+                        <button type="button" class="btn-close fs-6" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
                 </div>
             </div>
         </div>

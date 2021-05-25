@@ -5,6 +5,8 @@ html, body{
     background-color : #EAEAEA !important;
     color: rgba(0, 0, 0, 0.6) !important;
     overflow-y: hidden;
+    /* font-size: 1rem !important; */
+    height: 100%;
 }
 
 a{
@@ -19,6 +21,10 @@ a:hover{
 
 h1, h2, h3, h4, h5, h6{
     font-family: 'Montserrat', sans-serif !important;
+}
+
+p{
+    font-size: 0.875rem !important;
 }
 
 .navbar-brand{
@@ -46,8 +52,16 @@ h1, h2, h3, h4, h5, h6{
     color: rgba(0, 0, 0, 0.6) !important;
 }
 
-.cs-fw-700{
+.cs-fw-500{
     font-weight: 500 !important;
+}
+
+.cs-fw-600{
+    font-weight: 600 !important;
+}
+
+.cs-fw-800{
+    font-weight: 800 !important;
 }
 
 video{
@@ -55,10 +69,195 @@ video{
 }
 
 .heading{
-    font-size: 3.3rem;
+    font-size: 3rem !important;
     letter-spacing: 0.1rem;
 }
 
 .cs-text-justify{
     text-align: justify !important;
+}
+
+.navbar-nav .nav-item .nav-link{
+    transition: 0.2s linear all;
+}
+
+.navbar-nav .nav-item .nav-link.active{
+    /* color: #FF5F38 !important; */
+    font-weight: 800 !important;
+}
+
+.navbar-nav .nav-item .nav-link:hover{
+    font-weight: 800 !important;
+}
+
+.cs-fs-14px{
+    font-size: 0.875rem !important;
+}
+
+.cs-fs-12px{
+    font-size: 0.75rem !important;
+}
+
+.cs-btn-start{
+    font-size: 0.875rem !important;
+    bottom: 10% !important;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    padding: 8px 30px;
+    border-radius: 40px;
+    border: none;
+    z-index: 100;
+    /* opacity: 0.95; */
+    transition: 0.2s linear all;
+    /* color: #FFF; */
+    background-color: #EAEAEA;
+}
+.cs-btn-start:hover{
+    cursor: pointer !important;
+    /* opacity: 1; */
+    background-color: #fafafa;
+    /* border: 5px solid #fff; */
+    /* font-weight: bold !important; */
+    /* box-shadow: 1px 1px 1px 1px rgba(255,255,255,1); */
+
+}
+
+.cs-btn-get-started{
+    padding: 8px 12px;
+    border-radius: 40px;
+    font-size: 0.875rem;
+    border: none;
+    color: #EAEAEA !important;
+    background-color: #007670;
+    transition: 0.2s linear all;
+}
+.cs-btn-get-started:disabled{
+    opacity: 0.7 !important;
+}
+
+
+.cs-btn-get-started a{
+    color: #EAEAEA !important;
+}
+
+.cs-btn-get-started:hover{
+    transform: scale(1.05);
+}
+
+.cs-btn-get-started:disabled:hover{
+    transform: none !important;
+}
+
+.cs-btn-get-started-outlined{
+    border: 1px solid #007670;
+    border-radius: 40px;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    background: none;
+    transition: 0.2s linear all;
+}
+
+.cs-btn-get-started-outlined a{
+    color: #007670 !important;
+}
+
+.cs-btn-get-started-outlined:hover{
+    transform: scale(1.05);
+}
+
+.cs-img-get-started{
+    transform: scale(1.1) translateY(-10px);
+}
+
+.modal-content{
+    background-color: #EAEAEA !important;
+}
+
+.modal-content.opacity-9{
+    background-color: rgba(234,234,234,0.9) !important;
+}
+
+.progress{
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.cs-bg-secondary{
+    background-color: #007670 !important;
+    color: #EAEAEA !important;
+    opacity: 1 !important;
+}
+.cs-bg-secondary-outlined{
+    border: 1px solid #007670 !important;
+    color: #007670 !important;
+    z-index: 1000 !important;
+    opacity: 1 !important;
+    background-color: #EAEAEA !important;
+}
+
+.cs-steps-1{
+    background-color: #a3abab !important;
+}
+
+.cs-steps-2{
+    background-color: #afb5b5 !important;
+}
+
+.cs-steps-3{
+    background-color: #bcc0c0 !important;
+}
+
+.livestream{
+    width: 65%;
+    height: auto;
+    /* transform: scaleX(-1); */
+    box-shadow: 0px 0px 10px 2px rgba(0 ,0,0,0.5);
+    z-index: 100;
+}
+
+.cs-bg-gradient{
+    background-image: linear-gradient(205deg, #d3d3d3 0%, #7f8c8d 74%);
+}
+
+.cs-w-65{
+    width: 65% !important;
+}
+
+.cs-w-55{
+    width: 55% !important;
+}
+
+.face-angles{
+    width: 100%;
+}
+
+.face-angles.inverted{
+    transform: scaleX(-1);
+}
+
+.background-particle{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.cs-z-index-100{
+    z-index: 100 !important;
+}
+
+.cs-navbar{
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus{
+    color: rgba(0,0,0,0.6);
+    background-color: #f9f9f9;
+    border-color: #007670;
+    box-shadow: 0px 0px 5px 1px rgb(1 118 112 / 30%);
+}
+
+.check-icon{
+    width: 100px;
+    height: auto;
 }
