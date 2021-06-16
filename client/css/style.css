@@ -2,7 +2,7 @@ html, body{
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif !important;
-    background-color : #EAEAEA !important;
+    background-color : #eaeaea !important;
     color: rgba(0, 0, 0, 0.6) !important;
     overflow-y: hidden;
     /* font-size: 1rem !important; */
@@ -62,6 +62,14 @@ p{
 
 .cs-fw-800{
     font-weight: 800 !important;
+}
+
+.cs-ls-1{
+    letter-spacing: 0.1rem;
+}
+
+.cs-ls-2{
+    letter-spacing: 0.2rem;
 }
 
 video{
@@ -260,4 +268,49 @@ video{
 .check-icon{
     width: 100px;
     height: auto;
+}
+
+.cs-bg-red{
+    color: #cc2020 !important;
+}
+
+.cs-blink-animate {
+  animation: blink normal 2s infinite ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    10%{
+        opacity: 0.8;
+    }
+    20%{
+        opacity: 0.6;
+    }
+    30%{
+        opacity: 0.4;
+    }
+    40%{
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0;
+    }
+    60%{
+        opacity: 0.2;
+    }
+    70%{
+        opacity: 0.4;
+    }
+    80%{
+        opacity: 0.6;
+    }
+    90%{
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
 }
