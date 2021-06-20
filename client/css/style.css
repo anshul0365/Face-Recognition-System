@@ -2,7 +2,7 @@ html, body{
     margin: 0;
     padding: 0;
     font-family: 'Raleway', sans-serif !important;
-    background-color : #eaeaea !important;
+    background-color : #f1f1f1 !important;
     color: rgba(0, 0, 0, 0.6) !important;
     overflow-y: hidden;
     /* font-size: 1rem !important; */
@@ -118,12 +118,12 @@ video{
     /* opacity: 0.95; */
     transition: 0.2s linear all;
     /* color: #FFF; */
-    background-color: #EAEAEA;
+    background-color: #f1f1f1;
 }
 .cs-btn-start:hover{
     cursor: pointer !important;
     /* opacity: 1; */
-    background-color: #fafafa;
+    background-color: #eaeaea;
     /* border: 5px solid #fff; */
     /* font-weight: bold !important; */
     /* box-shadow: 1px 1px 1px 1px rgba(255,255,255,1); */
@@ -199,10 +199,10 @@ video{
     color: #007670 !important;
     z-index: 1000 !important;
     opacity: 1 !important;
-    background-color: #EAEAEA !important;
+    background-color: #f1f1f1 !important;
 }
 
-.cs-steps-1{
+/* .cs-steps-1{
     background-color: #a3abab !important;
 }
 
@@ -212,14 +212,19 @@ video{
 
 .cs-steps-3{
     background-color: #bcc0c0 !important;
-}
+} */
 
 .livestream{
     width: 65%;
-    height: auto;
-    /* transform: scaleX(-1); */
-    box-shadow: 0px 0px 10px 2px rgba(0 ,0,0,0.5);
+    height: 400px;
+    transform: scaleX(-1);
+    box-shadow: 0px 0px 10px 1px rgba(0 ,0,0,0.5);
     z-index: 100;
+}
+
+.liveStreamCanvas{
+    display: none;
+    /* transform: scaleX(-1); */
 }
 
 .cs-bg-gradient{
