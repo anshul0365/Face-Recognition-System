@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,26 +17,33 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent cs-z-index-100 cs-navbar py-1">
         <div class="container-fluid">
-            <a class="navbar-brand cs-font-Montserrat-700" href="#">Face Recognition</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand cs-text-color-black-60 cs-font-Montserrat-700" href="./index.html">Face Recognition</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item px-1">
-                        <a class="nav-link cs-text-color-black-60 cs-font-Montserrat" href="./index.html">Home</a>
+                        <a class="nav-link cs-text-color-black-60 cs-font-Montserrat" href="../../client/index.html">Home</a>
                     </li>
                     <li class="nav-item px-1">
-                        <a class="nav-link cs-font-Montserrat" href="./about.html">About Us</a>
+                        <a class="nav-link cs-font-Montserrat" href="../../client/about.html">About Us</a>
                     </li>
                     <li class="nav-item px-1">
-                        <a class="nav-link cs-font-Montserrat" href="./contact.html">Contact</a>
+                        <a class="nav-link cs-font-Montserrat" href="../../client/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item px-1 d-inline-flex align-items-center">
+                        <a href="https://github.com/anshul0365/Face-Recognition-System" title="GitHub Repo" target="_blank">
+                            <i class="bi bi-github"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -51,11 +59,8 @@
                     <span class="px-1">
                         Live Feed
                     </span>
-                    <button type="button" id="socketBTN" class="cs-zindex-100">Socket</button>
-                    <img src="" alt="" id="socketIMG">
-                    <ul id="socketMSG"></ul>
                 </div>
-                <video autoplay="true" class="livestream"></video>
+                <img src="{{ url_for('liveStream') }}" alt="" class="livestream-img">
             </div>
             <div class="col-1"></div>
         </div>
@@ -76,11 +81,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"
         crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
-        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
-        crossorigin="anonymous"></script>
-    
-    <!-- <script src="./js/particle.js"></script> -->
-    <script src="./js/recognize.js"></script>
+    <script src="{{url_for('static', filename='particle.js')}}"></script>
+    <script src="{{url_for('static', filename='recognize.js')}}"></script>
 </body>
+
 </html>

@@ -29,19 +29,7 @@ p{
 
 .navbar-brand{
     color: #d3d3d3 !important;
-    transition: 0.2s linear all;
 }
-
-.navbar-brand:hover{
-    color: #d3d3d3 !important;
-    letter-spacing: 0.6px;
-}
-
-.navbar-brand>.black{
-    color: rgba(0, 0, 0, 0.7) !important;
-    letter-spacing: 0.6px;
-}
-
 .cs-font-Raleway{
     font-family: 'Raleway', sans-serif !important;
 }
@@ -62,14 +50,6 @@ p{
 
 .cs-text-color-black-60{
     color: rgba(0, 0, 0, 0.6) !important;
-}
-
-.cs-text-color-black-60:hover{
-    color: rgba(0, 0, 0, 0.7) !important;
-}
-
-.cs-text-color-black-70{
-    color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .cs-fw-500{
@@ -112,14 +92,11 @@ video{
 .navbar-nav .nav-item .nav-link.active{
     /* color: #FF5F38 !important; */
     font-weight: 800 !important;
-    color: rgba(0, 0, 0, 0.7) !important;
 }
 
 .navbar-nav .nav-item .nav-link:hover{
     font-weight: 800 !important;
-    color: rgba(0, 0, 0, 0.6) !important;
 }
-
 
 .cs-fs-14px{
     font-size: 0.875rem !important;

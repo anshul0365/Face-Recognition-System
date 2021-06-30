@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent cs-z-index-100 cs-navbar py-1">
         <div class="container-fluid">
-            <a class="navbar-brand cs-font-Montserrat-700" href="#">Face Recognition</a>
+            <a class="navbar-brand cs-text-color-black-60 cs-font-Montserrat-700" href="./index.html">Face Recognition</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,11 @@
                     </li>
                     <li class="nav-item px-1">
                         <a class="nav-link cs-font-Montserrat" href="./contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item px-1 d-inline-flex align-items-center">
+                        <a href="https://github.com/anshul0365/Face-Recognition-System" title="GitHub Repo" target="_blank">
+                            <i class="bi bi-github"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -62,6 +67,31 @@
                         style="width: 2rem; height:2rem;" disabled>3</button>
                 </div>
             </div>
+        </div>
+
+        <!-- On User Media Block -->
+        <div class="row py-4" id="onUserMediaBlock" hidden>
+            <div class="col-1"></div>
+            <div class="col-10 d-flex justify-content-center flex-column align-items-center py-4">
+                <!-- <img class="check-icon cs-z-index-100" src="./assets/cross.png" /> -->
+                <i class="bi bi-camera-video-off cs-z-index-100"></i>
+                <div class="py-5 cs-z-index-100">
+                    <h4 class="cs-fw-600 text-center">Something went wrong !</h4>
+                    <h6 class="cs-fw-500 text-center">Try again later</h6>
+                    <span class="cs-fw-500">You'll be redirected to homepage in </span>
+                    <span class="cs-fw-500" id="redirectCount-error">10</span>
+                    <span class="cs-fw-500">sec ..</span>
+                </div>
+                <div class="cs-z-index-100">
+                    <a href="./index.html">
+                        <button type="submit" class="cs-btn-get-started px-4">Redirect Now
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </a>
+        
+                </div>
+            </div>
+            <div class="col-1"></div>
         </div>
 
         <!-- Step 1 -->
