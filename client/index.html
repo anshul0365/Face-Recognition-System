@@ -1,117 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Face Rcognition</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Face Rcognition</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand custom cs-font-Montserrat-700" href="./index.html">Face Recognition</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-1">
+                            <a class="nav-link active cs-text-color-black-60 cs-font-Montserrat" href="#">Home</a>
+                        </li>
+                        <li class="nav-item px-1">
+                            <a class="nav-link cs-font-Montserrat" href="./about.html">About Us</a>
+                        </li>
+                        <li class="nav-item px-1">
+                            <a class="nav-link cs-font-Montserrat" href="./contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item px-1 d-inline-flex align-items-center">
+                            <a href="https://github.com/anshul0365/Face-Recognition-System" title="GitHub Repo"
+                                target="_blank">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand custom cs-font-Montserrat-700" href="./index.html">Face Recognition</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item px-1">
-                        <a class="nav-link active cs-text-color-black-60 cs-font-Montserrat" href="#">Home</a>
-                    </li>
-                    <li class="nav-item px-1">
-                        <a class="nav-link cs-font-Montserrat" href="./about.html">About Us</a>
-                    </li>
-                    <li class="nav-item px-1">
-                        <a class="nav-link cs-font-Montserrat" href="./contact.html">Contact</a>
-                    </li>
-                    <li class="nav-item px-1 d-inline-flex align-items-center">
-                        <a href="https://github.com/anshul0365/Face-Recognition-System" title="GitHub Repo" target="_blank">
-                            <i class="bi bi-github"></i>
+            <div class="row">
+                <div class="col-lg-7 p-0 position-relative">
+                    <button type="button" class="position-absolute start-50 cs-btn-start cs-fw-500" id="btn-start"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">START</button>
+                    <video src="assets/biometric-face-recognition.mp4" defer autoplay="autoplay" width="100%" loop
+                        muted></video>
+                </div>
+                <div class="col-lg-5 my-5 p-5">
+                    <div>
+                        <span class="cs-font-Montserrat-900 heading" id="typeit-Face">FACE</span>
+                    </div>
+                    <div>
+                        <span class="cs-font-Montserrat-900 heading" id="typelt-Recognition">RECOGNITION</span>
+                    </div>
+                    <div class="mt-2">
+                        <p class="cs-text-justify">
+                            A face recognition system is a technology competent for matching a human face from an image or a
+                            video frame against a
+                            dataset consisting of faces, typically exercised to authenticate users through ID verification
+                            services, works by
+                            pinpointing and measuring facial features from a given image.
+                            While initially a form of computer application, face recognition systems have seen broad uses in
+                            recent times on
+                            smartphones and other forms of technology, such as robotics. Because computerized face
+                            recognition involves the
+                            measurement of a human's physiological characteristics. Although, the face recognition system is
+                            widely adopted due to
+                            its contactless process. Face recognition systems have been deployed in advanced human-computer
+                            interaction, video
+                            surveillance, and automatic indexing of images. They are also used widely by law enforcement
+                            agencies.
+                        </p>
+                        <a href="./about.html" class="d-inline-flex align-items-center">
+                            <span class="cs-fw-500 cs-fs-14px">Read More</span> <i class="bi bi-arrow-right-short fs-4"></i>
                         </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-7 p-0 position-relative">
-                <button type="button" class="position-absolute start-50 cs-btn-start cs-fw-500" id="btn-start"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">START</button>
-                <video src="assets/biometric-face-recognition.mp4" defer autoplay="true" width="100%" loop></video>
-            </div>
-            <div class="col-lg-5 my-5 p-5">
-                <div>
-                    <span class="cs-font-Montserrat-900 heading" id="typeit-Face">FACE</span>
-                </div>
-                <div>
-                    <span class="cs-font-Montserrat-900 heading" id="typelt-Recognition">RECOGNITION</span>
-                </div>
-                <div class="mt-2">
-                    <p class="cs-text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Reiciendis dolorum totam nam necessitatibus, recusandae pariatur,
-                        id debitis, delectus ratione quam consequuntur doloribus provident
-                        omnis adipisci. Veniam beatae enim deserunt molestias? Veritatis,
-                        mollitia laudantium quasi quidem expedita deleniti qui inventore
-                        officiis quis ab aliquid molestias. Tempora doloribus odio quae
-                        excepturi architecto.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quam cumque ipsum non expedita
-                        commodi esse nulla quod quo, quidem neque quia culpa aspernatur, laudantium totam itaque illo,
-                        placeat molestiae.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laborum, excepturi dolorem
-                        obcaecati illum nesciunt dolore id veniam fuga, deleniti harum blanditiis optio neque?
-                        Repellendus fuga modi ex voluptas explicabo, voluptates possimus rerum sapiente culpa, labore
-                        optio, vel impedit dolorem ipsa a odio. Rerum sunt dignissimos, accusamus nam neque nemo.
-                    </p>
-                    <a href="./about.html" class="d-inline-flex align-items-center">
-                        <span class="cs-fw-500 cs-fs-14px">Read More</span> <i class="bi bi-arrow-right-short fs-4"></i>
-                    </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content py-3">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="assets/get-started-bg.png" alt="Get Started | Face Recognition"
-                                    class="img-fluid cs-img-get-started">
-                            </div>
-                            <div class="col-lg-8 pe-5">
-                                <h4>Get Started</h4>
-                                <p> 
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem iure aut nesciunt maxime maiores dignissimos ipsam esse perferendis dolore ratione?
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, inventore.
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, tempore.
-                                </p>
-
-                                <div>
-                                    <button type="button" class="cs-btn-get-started">
-                                        <a href="./recognize.html">Recognize Me</a>
-                                    </button>
-                                    <button type="button" class="cs-btn-get-started-outlined mx-2">
-                                        <a href="./new-face-data.html">New Data</a>
-                                    </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content py-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <img src="assets/get-started-bg.png" alt="Get Started | Face Recognition"
+                                        class="img-fluid cs-img-get-started">
+                                </div>
+                                <div class="col-lg-8 pe-5">
+                                    <h4>Get Started</h4>
+                                    <p>
+                                        Our System provides two seprate modules for a complete face recognition process.
+                                        New Data will add your face data to our pre-existing dataset along with few
+                                        additional
+                                        parameters whereas Recognize Me will detect your face on behalf of pre-exisitng
+                                        dataset
+                                        exisiting in our database.
+                                        <br>
+                                        Explore both modules to get yourself recognized!!
+                                    </p>
+                                    <div>
+                                        <button type="button" class="cs-btn-get-started">
+                                            <a href="http://localhost:5000/recognize">Recognize Me</a>
+                                        </button>
+                                        <button type="button" class="cs-btn-get-started-outlined mx-2">
+                                            <a href="./new-face-data.html">New Data</a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -119,26 +126,17 @@
                 </div>
             </div>
         </div>
-    </div>
 
-
-
-
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-        crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-</body>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+            crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+        <!-- <script src="js/checkDevice.js"></script> -->
+    </body>
 </html>

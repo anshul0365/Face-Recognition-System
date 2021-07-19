@@ -6,6 +6,7 @@ import io
 import os
 import cv2
 import time
+import shutil
 import pickle
 import base64
 import imutils
@@ -13,6 +14,7 @@ import argparse
 from PIL import Image
 import face_recognition
 from imutils.video import VideoStream
+from imutils import paths
 
 app = Flask(__name__)
 CORS(app)
@@ -90,11 +92,67 @@ def getName():
         except OSError as error:
             return "Error:- "+error
         else:
-            # return make_response(jsonify("Face Data Saved Successfully"), 200)
             return jsonify(statusText="success", status=200, message="Face Data Saved Successfully")
     else:
         return jsonify(statusText="fail", status=400, message="Directory not present. Try again later")
-        # return redirect('../index.htm')
+
+@app.route('/encode_face', methods=['POST'])
+@cross_origin()
+def encode_face():
+
+    # USAGE
+    # python encode_faces.py --dataset dataset --encodings encodings.pickle
+
+    # construct the argument parser and parse the arguments
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-i", "--dataset", type=str, default="dataset", help="path to input directory of faces + images")
+    ap.add_argument("-e", "--encodings", type=str, default="encodings.pickle", help="path to serialized db of facial encodings")
+    ap.add_argument("-d", "--detection-method", type=str, default="hog", help="face detection model to use: either `hog` or `cnn`")
+    args = vars(ap.parse_args())
+
+    # grab the paths to the input images in our dataset
+    print("[INFO] quantifying faces...")
+    imagePaths = list(paths.list_images(args["dataset"]))
+
+    # initialize the list of known encodings and known names
+    knownEncodings = []
+    knownNames = []
+
+    # loop over the image paths
+    for (i, imagePath) in enumerate(imagePaths):
+        # extract the person name from the image path
+        print("[INFO] processing image {}/{}".format(i + 1, len(imagePaths)))
+        name = imagePath.split(os.path.sep)[-2]
+
+        # load the input image and convert it from RGB (OpenCV ordering) to dlib ordering (RGB)
+        image = cv2.imread(imagePath)
+        rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # detect the (x, y)-coordinates of the bounding boxes corresponding to each face in the input image
+        boxes = face_recognition.face_locations(rgb, model=args["detection_method"])
+
+        # compute the facial embedding for the face
+        encodings = face_recognition.face_encodings(rgb, boxes)
+
+        # loop over the encodings
+        for encoding in encodings:
+            # add each encoding + name to our set of known names and encodings
+            knownEncodings.append(encoding)
+            knownNames.append(name)
+
+    # dump the facial encodings + names to disk
+    print("[INFO] serializing encodings...")
+    data = {"encodings": knownEncodings, "names": knownNames}
+
+    try:
+        f = open(args["encodings"], "wb")
+        f.write(pickle.dumps(data))
+        return jsonify(statusText="success", status=200, message="Encoding successfull")
+    except Exception as e:
+        print (e)
+        return jsonify(statusText="fail", status=400, message="Encoding failed")
+    finally:
+        f.close()
 
 # Global Variables
 vs = None #VideoStream Object
@@ -198,8 +256,6 @@ def recognize():
 
         # check to see if we are supposed to display the output frame to the screen
         if args["display"] > 0:
-            # cv2.imshow("Frame", frame)
-
             retval, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
@@ -229,21 +285,31 @@ def stopStream():
     try:
         global vs
         global writer
-        # vs.VideoStream().release()
-        # vs.camera(0).release()
         vs.stop()
         vs.stream.release()
         cv2.VideoCapture().release
-        if(vs.stream.release()):
-            print('release')
         writer.release()
-        if(cv2.destroyAllWindows()):
-            print('cv2')
+        cv2.destroyAllWindows()
         
         return jsonify(statusText="success", status=200, message="Stream Closed")
     except Exception as e:
         return jsonify(statusText="fail", status=400, message=str(e))
-        
+
+
+@app.route('/clean_up', methods=['POST'])
+@cross_origin()
+def clean_up():
+    try: 
+        pass
+        # Check if temp folder exists inside dataset, then delete it
+        if os.path.isdir('./dataset/temp'):
+            shutil.rmtree('./dataset/temp', ignore_errors=True)
+            print("clean up successfull")
+        return jsonify(statusText="success", status=200, message="Clean Up successfull")
+    except Exception as e:
+        print (e)
+        return jsonify(statusText="fail", status=400, message=str(e))
+
 
 @app.errorhandler(404)
 def page_not_found(e):
